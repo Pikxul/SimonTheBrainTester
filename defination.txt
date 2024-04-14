@@ -1,0 +1,42 @@
+var buttonColours = ["red","blue","green","yellow"]; - This line creates an array of colors that will be used in the game.
+
+
+var gamePattern = []; - This line creates an empty array to store the sequence of colors that the game will generate.
+
+
+var userClickedPattern = []; - This line creates another empty array to store the sequence of colors that the user clicks.
+
+
+var started = false; - This line creates a variable to keep track of whether the game has started or not.
+
+
+var level = 0; - This line creates a variable to keep track of the current level.
+
+
+The next block of code is a jQuery event handler that listens for a keypress event on the document object. 
+When a key is pressed and the game hasn't started yet, it starts the game by calling the nextSequence function and setting the started variable to true.
+
+
+The next block of code is a jQuery event handler that listens for a click event on any element with the class btn.
+When a button is clicked, it gets the ID of the clicked button (which should correspond to a color), 
+pushes it to the userClickedPattern array, plays a sound, animates the button press, and checks the user's answer.
+
+
+The checkAnswer function checks if the user's answer matches the game's sequence at the current level. 
+If it does, and the user has completed the current sequence, it waits for a second and then generates the next sequence. 
+If the user's answer is incorrect, it plays a "wrong" sound, adds a "game-over" class to the body, updates the level title, 
+waits for 200 milliseconds, removes the "game-over" class, and restarts the game.
+
+
+The nextSequence function resets the userClickedPattern array, increments the level, 
+updates the level title, generates a random number between 0 and 3, uses this number to select a random color from the buttonColours array, 
+pushes this color to the gamePattern array, fades the corresponding button in and out, and plays a sound for the chosen color.
+
+
+The animatePress function adds a "pressed" class to the clicked button, waits for 100 milliseconds, and then removes the "pressed" class.
+
+
+The playSound function creates a new Audio object with the specified sound file, and plays the sound.
+
+
+The startOver function resets the level, gamePattern array, and started variable to their initial values.
